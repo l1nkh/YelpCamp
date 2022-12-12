@@ -2,6 +2,9 @@
 <div class="row">
     <div class="col-6 offset-3">
         <div class="card mb-3">
+            <% const randomDays = Math.floor(Math.random() * 1000); %>
+            <% const randomYear = Math.floor(Math.random() * (11 - 1) + 1); %> 
+            
             <img src="<%= campground.image %>" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">
@@ -24,7 +27,14 @@
                 <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
-            </div>         
+            </div>
+            <div class="card-footer text-muted">
+                <% if (randomDays > 365) { %> 
+                    Posted <%= randomYear %> years ago
+                <% } else { %> 
+                    <%= randomDays %>  days ago
+                <% } %>
+            </div>
         </div>
     </div>
 </div>
